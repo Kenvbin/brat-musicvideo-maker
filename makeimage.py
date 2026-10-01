@@ -14,11 +14,16 @@ class imagecreation:
         total = 0
         newSentence = ""
         iteration = 0
+        newLine = 0
 
         for i in wordLength:
+            if (newLine == 2):
+                newSentence = ""
+                newLine = 0
             if (i + total > 13):
                 newSentence = newSentence + "\n" + wordArray[iteration] + " "
                 total = i
+                newLine+=1
             else:
                 newSentence = newSentence + wordArray[iteration] + " "
                 total = i + total
