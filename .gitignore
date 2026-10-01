@@ -4,3 +4,5 @@ __pycache__/
 .venv/
 font/*
 .DS_Store
+videos/*
+frames/*
