@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 
 class imagecreation:
@@ -20,21 +20,23 @@ class imagecreation:
             if (newLine == 2):
                 newSentence = ""
                 newLine = 0
-            if (i + total > 13):
-                newSentence = newSentence + "\n" + wordArray[iteration] + " "
+
+            if (i + total > 15):
+                newSentence = newSentence + "\n"
                 total = i
                 newLine+=1
+
             else:
-                newSentence = newSentence + wordArray[iteration] + " "
                 total = i + total
+            newSentence = newSentence + wordArray[iteration] + " "
             iteration = iteration + 1
 
         return newSentence
     
     def make_image(textforPrep, frameNum):
 
-        W, H = 500,500
-        font = ImageFont.truetype("font/Ldfcomicsans-jj7l.ttf", 50)
+        W, H = 900,900
+        font = ImageFont.truetype("font/ArialNarrowRegular.ttf", 90)
 
         textforImage = imagecreation.prep_sentence(textforPrep)
         
@@ -45,4 +47,6 @@ class imagecreation:
         _, _, w, h = writeText.textbbox((0, 0), textforImage, font=font)
         writeText.text(((W-w)/2, (H-h)/2), textforImage, font = font, fill=0)
 
-        frame.save(imageName, "PNG")
+        finishedFrame = frame.filter(ImageFilter.GaussianBlur(2))
+
+        finishedFrame.save(imageName, "PNG")

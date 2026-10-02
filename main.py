@@ -13,11 +13,13 @@ if not os.path.exists("font"):
 flag = os.O_RDONLY
 
 try:
-    os.open("font/Ldfcomicsans-jj7l.ttf", flag)
+    os.open("font/ArialNarrowRegular.ttf", flag)
 except FileNotFoundError:
     print("Font is missing from the font foler")
+    raise
 
 textToWrite = input("Write: ")
+title = input("Title of video: ")
 gradualText = ""
 iteration = 0
 
@@ -26,4 +28,4 @@ for x in textToWrite:
     imagecreation.make_image(gradualText, iteration)
     iteration = iteration + 1
 
-videoCreation.export("TestVideo")
+videoCreation.export(title)
