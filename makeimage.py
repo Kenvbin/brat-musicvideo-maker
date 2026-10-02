@@ -17,17 +17,16 @@ class imagecreation:
         newLine = 0
 
         for i in wordLength:
-            if (newLine == 2):
-                newSentence = ""
-                newLine = 0
-
-            if (i + total > 15):
+            if (i + total >= 15):
                 newSentence = newSentence + "\n"
                 total = i
                 newLine+=1
+                if (newLine == 3):
+                    newSentence = ""
+                    newLine = 0
 
             else:
-                total = i + total
+                total = i + total + 1
             newSentence = newSentence + wordArray[iteration] + " "
             iteration = iteration + 1
 

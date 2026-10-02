@@ -20,6 +20,7 @@ except FileNotFoundError:
 
 textToWrite = input("Write: ")
 title = input("Title of video: ")
+title = "\"" + title + "\""
 gradualText = ""
 iteration = 0
 
