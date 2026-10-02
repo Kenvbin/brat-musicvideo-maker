@@ -32,14 +32,13 @@ class imagecreation:
 
         return newSentence
     
-    def make_image(textforPrep, frameNum):
+    def make_image(textforPrep):
 
         W, H = 900,900
         font = ImageFont.truetype("font/ArialNarrowRegular.ttf", 90)
 
         textforImage = imagecreation.prep_sentence(textforPrep)
         
-        imageName = "frames/frame" + str(frameNum) + ".png"
         frame = Image.new(mode="RGB", size=(W,H), color =(255,255,255))
         writeText = ImageDraw.Draw(frame)
 
@@ -48,4 +47,4 @@ class imagecreation:
 
         finishedFrame = frame.filter(ImageFilter.GaussianBlur(2))
 
-        finishedFrame.save(imageName, "PNG")
+        return finishedFrame

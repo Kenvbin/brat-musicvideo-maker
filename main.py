@@ -1,12 +1,12 @@
 import os
 
+import ffmpegio
+
 from makeimage import imagecreation
-from makevideo import videoCreation
 
 if not os.path.exists("videos"):
     os.mkdir("videos")
-if not os.path.exists("frames"):
-    os.mkdir("frames")
+
 if not os.path.exists("font"):
     os.mkdir("font")
 
@@ -19,14 +19,26 @@ except FileNotFoundError:
     raise
 
 textToWrite = input("Write: ")
+
 title = input("Title of video: ")
-title = "\"" + title + "\""
+title= "videos/" + title + ".mp4"
+
 gradualText = ""
-iteration = 0
 
-for x in textToWrite:
-    gradualText = gradualText + x
-    imagecreation.make_image(gradualText, iteration)
-    iteration = iteration + 1
+def image_processor():
+    global gradualText
+    for x in textToWrite:
+        gradualText = gradualText + x
+        yield imagecreation.make_image(gradualText)
 
-videoCreation.export(title)
+#Code bellow from "Video to/from Pillow Images" on ffmpegio doccumentation
+with ffmpegio.open(
+        title, # output file name
+        "wv", # open file in write-video mode
+        10/1, # framerate in frames/second
+        pix_fmt="yuv420p", # specify the pixel format (default is yuv444p)
+    ) as f:
+    for frame in image_processor(): # frame is PIL Image
+        f.write(frame)
+
+
