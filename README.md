@@ -1,4 +1,4 @@
-![huricane](https://cdn.discordapp.com/attachments/773016620687294508/1555462022299131904/huricane.gif?backend=b2&ex=6ac09c65&is=6abf4ae5&hm=7c3efeecc541612a743cee6e0658f3233a0ca9378999e2f9cd715edae4163d93&)
+![huricane](https://cdn.discordapp.com/attachments/773016620687294508/1555462022299131904/huricane.gif?backend=b2&ex=6aca7fa5&is=6ac92e25&hm=540fdf6acee5aee5953c93767d98b8ee57187fbdaa2908c83af9aa98de795f69&)
 
 <h2>How the final project should work</h2>
 
